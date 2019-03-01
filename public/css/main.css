@@ -1,0 +1,106 @@
+.title-row {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.card {
+    margin-bottom: 25px;
+}
+
+.card-body ul {
+    margin-bottom: 15px;
+}
+
+.table-title {
+    border: 1px solid #DDD;
+    border-radius: 5px 5px 0 0;
+    padding: 10px;
+    background-color: #EEE;
+}
+
+.table-panel {
+    border-bottom: 1px solid #DDD;
+    border-left: 1px solid #DDD;
+    border-right: 1px solid #DDD;
+    border-radius: 0 0 5px 5px;
+    padding: 10px;
+}
+
+.table-orders {
+    width: 80%;
+}
+
+.table-orders td, .table-orders th {
+    border: 1px solid #EEE;
+    padding: 5px;
+}
+
+.table-orders td {
+    border: 1px solid #EEE;
+}
+
+.table-totals {
+    width: 100%;
+}
+
+.down-arrow {
+    text-align: right;
+}
+
+.border-sm {
+    display: none;
+}
+
+.kitchen-table-counter {
+    text-align: right;
+}
+
+#admin-container button {
+    float: right;
+}
+
+
+/* COL-XS */
+@media screen and (max-width: 575px) {
+
+    .edit-btn {
+        margin-bottom: 10px;
+    }
+
+    .pay-btn {
+        margin-bottom: 10px;
+    }
+
+    .text-center-sm {
+        text-align: center;
+    }
+
+    .table-orders {
+        width: 100%;
+    }
+    
+    .border-sm {
+        display: block;
+    }
+
+    .table-title {
+        margin: 10px 10px 0 10px;
+    }
+
+    .table-panel {
+        margin: 0 10px 25px 10px;
+    }
+
+    .kitchen-table-title {
+        text-align: center;
+    }
+
+    .kitchen-table-counter {
+        text-align: center;
+    }
+
+    .order-button {
+        display: block;
+        margin-top: 20px;
+    }
+}

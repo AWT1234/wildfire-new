@@ -1,0 +1,94 @@
+<% include partials/header %>
+
+ <!-- Content -->
+ <div class="container">
+        <div class="row">
+
+            <div class="col-sm-12 title-row">
+                <h1>Counter</h1>
+                <hr>
+            </div>
+
+            <div class="col-sm-12 table-title" data-toggle="collapse" href="#collapse1" role="button">
+                <div class="row">
+                    <div class="col-sm-6 text-center-sm  my-auto"><h4>Table 1</h4></div>
+                    <div class="col-sm-6 text-center-sm down-arrow my-auto"><i data-feather="chevrons-down"></i></div>
+                </div>
+            </div>
+            <div class="col-sm-12 table-panel collapse" id="collapse1">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p class="lead">Order</p>
+                        <hr>
+                    </div>
+                    <div class="col-sm-8">
+                        <table class="table-orders">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="w-75">Item</th>
+                                    <th scope="col">Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Item 1</td>
+                                    <td>£9.99</td>
+                                </tr>
+                                <tr>
+                                    <td>Item 2</td>
+                                    <td>£12.99</td>
+                                </tr>
+                                <tr>
+                                    <td>Item 3</td>
+                                    <td>£6.99</td>
+                                </tr>
+                                <tr>
+                                    <td>Item 4</td>
+                                    <td>£7.99</td>
+                                </tr>
+                                <tr>
+                                    <td>Item 5</td>
+                                    <td>£6.99</td>
+                                </tr>
+                                <tr>
+                                    <td>Item 6</td>
+                                    <td>£8.99</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <hr class="border-sm">
+                                <table class="table-totals">
+                                    <tr>
+                                        <td class="w-50"><strong>Sub-Total:</strong></td>
+                                        <td>£0.00</td>
+                                    </tr>
+                                    <tr>
+                                            <td><strong>VAT:</strong></td>
+                                            <td>£0.00</td>
+                                    </tr>
+                                    <tr>
+                                            <td><strong>Total:</strong></td>
+                                            <td>£0.00</td>
+                                    </tr>
+                                </table>
+                                <hr>
+                            </div>
+                         
+                            <div class="col-sm-6 text-center">
+                                <button class="btn btn-warning edit-btn"><i data-feather="edit"></i> Edit</button>
+                            </div>
+                            <div class="col-sm-6 text-center">
+                                <button class="btn btn-success pay-btn"><i data-feather="credit-card"></i> Pay</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- row -->
+    </div> <!-- containter-->
+
+<% include partials/footer %>

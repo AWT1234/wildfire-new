@@ -1,0 +1,89 @@
+<% include partials/header %>
+
+<!-- Content -->
+<div class="container" id="admin-container">
+        <div class="row">
+            <div class="col-sm-12 title-row">
+                <h1>Admin</h1>
+                <div class="row">
+                    <div class="col-12">
+                        <h3>- Edit Menu</h3>
+                        <button id="refreshMenu" type="button" class="btn btn-outline-primary" method="GET" action="">Refresh</button>
+                    </div>
+                </div>
+                <hr>
+                <div id="menu" class="row">
+                    <div id="product" class="col">
+                        <label>Product</label>
+                        <ul>Item 1</ul>
+                        <ul>Item 2</ul>
+                        <ul>Item 3</ul>
+                        <ul>Item 4</ul>
+                        <ul>Item 5</ul>
+                    </div>
+                    <div id="productPrice" class="col">
+                        <label>Price</label>
+                        <ul>Price 1</ul>
+                        <ul>Price 2</ul>
+                        <ul>Price 3</ul>
+                        <ul>Price 4</ul>
+                        <ul>Price 5</ul>
+                    </div>
+                    <div id="productCategory" class="col">
+                        <label>Category</label>
+                        <ul>Category 1</ul>
+                        <ul>Category 2</ul>
+                        <ul>Category 3</ul>
+                        <ul>Category 4</ul>
+                        <ul>Category 5</ul>
+                    </div>
+                    <div id="productEdit" class="col">
+                        <label></label>
+                        <ul><button id="editMenu" type="button" class="btn btn-outline-warning" action="">Edit</button></ul><br />
+                        <ul><button id="editMenu" type="button" class="btn btn-outline-warning" action="">Edit</button></ul><br />
+                        <ul><button id="editMenu" type="button" class="btn btn-outline-warning" action="">Edit</button></ul><br />
+                        <ul><button id="editMenu" type="button" class="btn btn-outline-warning" action="">Edit</button></ul><br />
+                        <ul><button id="editMenu" type="button" class="btn btn-outline-warning" action="">Edit</button></ul><br />
+                    </div>
+                    <div id="productDelete" class="col">
+                        <label></label>
+                        <ul><button id="deleteProduct" type="button" class="btn btn-outline-danger" method="DELETE" action="">Delete</button></ul><br />
+                        <ul><button id="deleteProduct" type="button" class="btn btn-outline-danger" method="DELETE" action="">Delete</button></ul><br />
+                        <ul><button id="deleteProduct" type="button" class="btn btn-outline-danger" method="DELETE" action="">Delete</button></ul><br />
+                        <ul><button id="deleteProduct" type="button" class="btn btn-outline-danger" method="DELETE" action="">Delete</button></ul><br />
+                        <ul><button id="deleteProduct" type="button" class="btn btn-outline-danger" method="DELETE" action="">Delete</button></ul><br />
+                    </div>
+                </div>
+                <div class="col-sm-12 title-row">
+                    <hr>
+                    <form method="POST" action="">
+                        <div class="row">
+                            <div class="col">
+                                <input id="productName" type="text" class="form-control" placeholder="Product name..." required>
+                            </div>
+                            <div class="col">
+                                <input id="productPrice" type="number" class="form-control" placeholder="Product price..." required>
+                            </div>
+                            <div class="col">
+                                <div class="form-group col-lg">
+                                    <select id="productCategory" class="form-control" required>
+                                        <option selected>Product category...</option>
+                                        <option>Drinks</option>
+                                        <option>Noodle</option>
+                                        <option>Rice</option>
+                                        <option>Western</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <button id="addProduct" type="button" class="btn btn-outline-success" formmethod="POST" action="">Add +</button>
+                            </div>
+                        </div>
+                    </form>
+                    <hr>
+                </div>
+            </div>
+        </div> <!-- row -->
+    </div> <!-- containter-->
+
+<% include partials/footer %>
