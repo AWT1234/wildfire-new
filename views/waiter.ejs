@@ -8,58 +8,21 @@
             <h1>Tables</h1>
         </div>
 
-        <div class="col-sm-4 col-md-3">
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title">Table 1</h3>
+        <% for(i = 1; i <= 6; i++)
+        {%>
+            <div class="col-sm-4 col-md-3">
+                <div class="card" id="table<%=i%>">
+                    <div class="card-body">
+                        <h3 class="card-title">Table <%=i %></h3>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="col-sm-4 col-md-3">
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title">Table 2</h3>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-sm-4 col-md-3">
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title">Table 3</h3>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-sm-4 col-md-3">
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title">Table 4</h3>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-sm-4 col-md-3">
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title">Table 5</h3>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-sm-4 col-md-3">
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title">Table 6</h3>
-                </div>
-            </div>
-        </div>
+        <%}%>
     </div>
 
     <div class="row">
         <div class="offset-lg-2 col-md-12 col-lg-8" style="margin-bottom: 25px">
-            <button type="submit" class="btn btn-primary btn-block">Start/Edit order for Selected Table</button>
+            <button type="submit" class="btn btn-primary btn-block" id="tableSelector">Start/Edit order for Selected Table</button>
         </div>
     </div>
 
@@ -68,24 +31,79 @@
             <div class="card">
                 <div class="card-body">
                         <div class="card-title">
-                        
-                        <h3>Menu/Edit for Table 1</h3>
-                        <hr>
-
-                        <form action="waiter.js">
-                            <label class="col-sm-7 col-xs-5">Item name</label>
-                            <button type="submit" class="btn col-sm-1"><i data-feather="plus"></i></button>
-                            <label class="col-sm-2 col-xs-1">0</label>
-                            <button type="submit" class="btn col-sm-1"><i data-feather="minus"></i></button>
-
-                            <label class="col-sm-7">Item name</label>
-                            <button type="submit" class="btn col-sm-1"><i data-feather="plus"></i></button>
-                            <label class="col-sm-2">0</label>
-                            <button type="submit" class="btn col-sm-1"><i data-feather="minus"></i></button>
-
+                            <h3>Menu/Edit for Table 1</h3>
                             <hr>
-                            <button type="submit" class="btn btn-primary btn-block col-sm-12">Submit</button>
                         </div>
+
+                        <form action="#" method="post" id="order-form">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <p class="lead">Noodle Dishes</p>
+                                </div>
+                            
+                                <% products.forEach(function(product){
+                                    if(product.category == 'noodle') { 
+                                        var item = product.productName.replace(/\s/g, '');
+                                        item = item.toLowerCase();
+                                        %>                                 
+                                        <div class="col-sm-6 item-name">
+                                            <p><%= product.productName %> <em class="text-info"> <%= '- £ ' + product.price %></em></p>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group text-right">
+                                                <input type="number" class="form-control item-quantity-input" min="0" max="50" value="0" id="<%= item %>" name="<%= item %>">
+                                            </div>
+                                        </div>
+                                <% }}); %>
+                                <div class="col-sm-12"><hr></div>
+                                <div class="col-sm-12">
+                                    <p class="lead">Rice Dishes</p>
+                                </div>
+                                <% products.forEach(function(product){
+                                    if(product.category == 'rice') { %>                                 
+                                        <div class="col-sm-6">
+                                            <p><%= product.productName %> <em class="text-info"> <%= '- £ ' + product.price %></em></p>
+                                        </div>
+                                        <div class="col-sm-6 text-right">
+                                            <div class="form-group">
+                                                <input type="number" class="form-control item-quantity-input" min="0" max="50" value="0" id="<%= product.productName %>" name="<%= product.productName %>">
+                                            </div>
+                                        </div>
+                                <% }}); %>
+                                <div class="col-sm-12"><hr></div>
+                                <div class="col-sm-12">
+                                    <p class="lead">Western Dishes</p>
+                                </div>
+                                <% products.forEach(function(product){
+                                    if(product.category == 'western') { %>                                 
+                                        <div class="col-sm-6">
+                                            <p><%= product.productName %> <em class="text-info"> <%= '- £ ' + product.price %></em></p>
+                                        </div>
+                                        <div class="col-sm-6 text-right">
+                                            <div class="form-group">
+                                                <input type="number" class="form-control item-quantity-input" min="0" max="50" value="0" id="<%= product.productName %>" name="<%= product.productName %>">
+                                            </div>
+                                        </div>
+                                <% }}); %>
+                                <div class="col-sm-12"><hr></div>
+                                <div class="col-sm-12">
+                                    <p class="lead">Drinks</p>
+                                </div>
+                                <% products.forEach(function(product){
+                                    if(product.category == 'drinks') { %>                                 
+                                        <div class="col-sm-6">
+                                            <p><%= product.productName %> <em class="text-info"> <%= '- £ ' + product.price %></em></p>
+                                        </div>
+                                        <div class="col-sm-6 text-right">
+                                            <div class="form-group">
+                                                <input type="number" class="form-control item-quantity-input" min="0" max="50" value="0" id="<%= product.productName %>" name="<%= product.productName %>">
+                                            </div>
+                                        </div>
+                            
+                                <% }}); %>     
+                            </div>
+                            <hr>
+                            <button type="submit" class="btn btn-primary btn-block col-sm-12">Submit Order</button>
                         </form>
                     </div>
                 </div>

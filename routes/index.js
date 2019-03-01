@@ -3,6 +3,7 @@ var router = express.Router();
 var passport = require('passport');
 
 var User = require('../models/user');
+var Product = require('../models/product');
 
 // Index
 router.get('/', function(req, res){
@@ -21,7 +22,13 @@ router.get('/counter', isLoggedIn, function(req, res){
 
 // Waiter
 router.get('/waiter', isLoggedIn, function(req, res){
-    res.render("waiter");
+     // get all products from database
+     Product.find({}, function(error, docs){
+        // set returned results to products
+        var products = docs
+        // render waiter view and send products as an array
+        res.render('waiter', { products });
+    });
 });
 
 // Admin

@@ -9,6 +9,7 @@ const LocalStrategy = require('passport-local');
 const methodOverride = require('method-override');
 const favicon = require('express-favicon');
 
+// Connect to the database
 mongoose.connect('mongodb://localhost/wildfire', { useNewUrlParser: true });
 
 app.set('view engine', 'ejs');

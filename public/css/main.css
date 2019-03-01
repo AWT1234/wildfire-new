@@ -59,6 +59,14 @@
     float: right;
 }
 
+.item-quantity-input {
+    width: 50%;
+    display: inline-block;
+}
+
+.item-name {
+    padding-top: 9px;
+}
 
 /* COL-XS */
 @media screen and (max-width: 575px) {
