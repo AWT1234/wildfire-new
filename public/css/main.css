@@ -59,6 +59,23 @@
     float: right;
 }
 
+#admin-container button.a {
+    font-size: 20px;
+}
+
+
+#admin-container li {
+    padding: 20px;
+    list-style-type: none;
+    text-transform: capitalize;
+}
+
+#admin-container li.a {
+    padding: 20px;
+    list-style-type: decimal;
+    
+}
+
 .item-quantity-input {
     width: 50%;
     display: inline-block;

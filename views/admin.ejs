@@ -7,83 +7,62 @@
                 <h1>Admin</h1>
                 <div class="row">
                     <div class="col-12">
-                        <h3>- Edit Menu</h3>
-                        <button id="refreshMenu" type="button" class="btn btn-outline-primary" method="GET" action="">Refresh</button>
+                        <h3>- Edit Product List</h3>
                     </div>
                 </div>
-                <hr>
-                <div id="menu" class="row">
-                    <div id="product" class="col">
-                        <label>Product</label>
-                        <ul>Item 1</ul>
-                        <ul>Item 2</ul>
-                        <ul>Item 3</ul>
-                        <ul>Item 4</ul>
-                        <ul>Item 5</ul>
-                    </div>
-                    <div id="productPrice" class="col">
-                        <label>Price</label>
-                        <ul>Price 1</ul>
-                        <ul>Price 2</ul>
-                        <ul>Price 3</ul>
-                        <ul>Price 4</ul>
-                        <ul>Price 5</ul>
-                    </div>
-                    <div id="productCategory" class="col">
-                        <label>Category</label>
-                        <ul>Category 1</ul>
-                        <ul>Category 2</ul>
-                        <ul>Category 3</ul>
-                        <ul>Category 4</ul>
-                        <ul>Category 5</ul>
-                    </div>
-                    <div id="productEdit" class="col">
-                        <label></label>
-                        <ul><button id="editMenu" type="button" class="btn btn-outline-warning" action="">Edit</button></ul><br />
-                        <ul><button id="editMenu" type="button" class="btn btn-outline-warning" action="">Edit</button></ul><br />
-                        <ul><button id="editMenu" type="button" class="btn btn-outline-warning" action="">Edit</button></ul><br />
-                        <ul><button id="editMenu" type="button" class="btn btn-outline-warning" action="">Edit</button></ul><br />
-                        <ul><button id="editMenu" type="button" class="btn btn-outline-warning" action="">Edit</button></ul><br />
-                    </div>
-                    <div id="productDelete" class="col">
-                        <label></label>
-                        <ul><button id="deleteProduct" type="button" class="btn btn-outline-danger" method="DELETE" action="">Delete</button></ul><br />
-                        <ul><button id="deleteProduct" type="button" class="btn btn-outline-danger" method="DELETE" action="">Delete</button></ul><br />
-                        <ul><button id="deleteProduct" type="button" class="btn btn-outline-danger" method="DELETE" action="">Delete</button></ul><br />
-                        <ul><button id="deleteProduct" type="button" class="btn btn-outline-danger" method="DELETE" action="">Delete</button></ul><br />
-                        <ul><button id="deleteProduct" type="button" class="btn btn-outline-danger" method="DELETE" action="">Delete</button></ul><br />
-                    </div>
-                </div>
-                <div class="col-sm-12 title-row">
-                    <hr>
-                    <form method="POST" action="">
-                        <div class="row">
-                            <div class="col">
-                                <input id="productName" type="text" class="form-control" placeholder="Product name..." required>
-                            </div>
-                            <div class="col">
-                                <input id="productPrice" type="number" class="form-control" placeholder="Product price..." required>
-                            </div>
-                            <div class="col">
-                                <div class="form-group col-lg">
-                                    <select id="productCategory" class="form-control" required>
-                                        <option selected>Product category...</option>
-                                        <option>Drinks</option>
-                                        <option>Noodle</option>
-                                        <option>Rice</option>
-                                        <option>Western</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <button id="addProduct" type="button" class="btn btn-outline-success" formmethod="POST" action="">Add +</button>
-                            </div>
-                        </div>
+                <table class="table">
+                    <form id="addProductForm" method="POST" action="/admin">
+                        <thead>
+                            <tr>
+                                <th>Products</th>
+                                <th>Price</th>
+                                <th>Catgeory</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td><input name="productName" type="text" class="form-control" placeholder="Product name..." required></td>
+                            <td><input name="price" type="number" step="0.01" class="form-control" placeholder="Product price..." required></td>
+                            <td><select name="category" class="form-control" required>
+                                <option selected>Product category...</option>
+                                <option>Drinks</option>
+                                <option>Noodle</option>
+                                <option>Rice</option>
+                                <option>Western</option></select></td>
+                            <td><input type="submit" class="btn btn-outline-success add-product" value="Add + "></td>
+                        </tr>
                     </form>
-                    <hr>
+                </table>
+                <table class="table">
+                <div class="row">
+                    <td id="productName" class="">
+                        <% for(var i = 0; i < products.length; i++) { %>
+                           <li class="a"><%= products[i].productName %></li>
+                        <% } %>
+                    </td>
+                    <td id="productPrice" class="">
+                        <% for(var i = 0; i < products.length; i++) { %>
+                           <li>£<%= products[i].price %></li>
+                        <% } %>
+                    </td>
+                    <td id="productCategory" class="">
+                        <% for(var i = 0; i < products.length; i++) { %>
+                           <li><%= products[i].category %></li>
+                        <% } %>
+                    </td>
+                    <td id="actions" class="">
+                        <% for(var i = 0; i < products.length; i++) { %>
+                           <li><button id="saveProduct" type="button" class="btn btn-outline-success a" method="UPDATE" action="/admin">Save</button>
+                            <button id="editProduct" type="button" class="btn btn-outline-warning a" action="">Edit</button>
+                           <button name="deleteProduct" type="button" class="btn btn-outline-danger a" method="DELETE" action="/admin">Delete</button></li><br />
+                        <% } %>
+                    </td>
                 </div>
+            </table>
+
             </div>
         </div> <!-- row -->
     </div> <!-- containter-->
+
 
 <% include partials/footer %>

@@ -33,7 +33,42 @@ router.get('/waiter', isLoggedIn, function(req, res){
 
 // Admin
 router.get('/admin', isLoggedIn, function(req, res){
-    res.render("admin");
+    Product.find({}, function(err, docs){
+        var products = docs
+        res.render('admin', {products})
+    });
+});
+
+router.post('/admin', function(req, res) {
+    var newProduct = new Product(req.body);
+    newProduct.save()
+    .then(item => {
+      res.send("item saved to database");
+    })
+    .catch(err => {
+      res.status(400).send("unable to save to database");
+    });
+    
+});
+
+router.delete('/admin', function(req, res) {
+    Product.delete({
+        _id: req.params.id
+    }, function(err, doc) {
+        res.send({
+            _id: req.params.id
+        });
+    });
+});
+
+router.put('/admin', function(req, res) {
+    Product.update({
+        _id: req.params.id
+    }, function(err, doc) {
+        res.send({
+            _id: req.params.id
+        });
+    });
 });
 
 // AUTHENICATION
