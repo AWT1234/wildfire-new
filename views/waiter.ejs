@@ -22,16 +22,16 @@
 
     <div class="row">
         <div class="offset-lg-2 col-md-12 col-lg-8" style="margin-bottom: 25px">
-            <button type="submit" class="btn btn-primary btn-block" id="tableSelector">Start/Edit order for Selected Table</button>
+            <button type="submit" class="btn btn-primary btn-block" id="tableSelector" type="button" data-toggle="collapse" data-target="#collapseMenu">Start/Edit order for Selected Table</button>
         </div>
     </div>
 
     <div class="row">
         <div class="offset-lg-2 col-sm-12 col-lg-8">
-            <div class="card">
+            <div class="card collapse" id="collapseMenu">
                 <div class="card-body">
                         <div class="card-title">
-                            <h3>Menu/Edit for Table 1</h3>
+                            <h3 id="menuTitleNum">Order for Table 1</h3>
                             <hr>
                         </div>
 
@@ -47,7 +47,7 @@
                                         item = item.toLowerCase();
                                         %>                                 
                                         <div class="col-sm-6 item-name">
-                                            <p><%= product.productName %> <em class="text-info"> <%= '- £ ' + product.price %></em></p>
+                                            <p><%= product.productName %> <em class="text-info"> <%= '- £' + product.price %></em></p>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group text-right">
@@ -62,7 +62,7 @@
                                 <% products.forEach(function(product){
                                     if(product.category == 'rice') { %>                                 
                                         <div class="col-sm-6">
-                                            <p><%= product.productName %> <em class="text-info"> <%= '- £ ' + product.price %></em></p>
+                                            <p><%= product.productName %> <em class="text-info"> <%= '- £' + product.price %></em></p>
                                         </div>
                                         <div class="col-sm-6 text-right">
                                             <div class="form-group">
@@ -77,7 +77,7 @@
                                 <% products.forEach(function(product){
                                     if(product.category == 'western') { %>                                 
                                         <div class="col-sm-6">
-                                            <p><%= product.productName %> <em class="text-info"> <%= '- £ ' + product.price %></em></p>
+                                            <p><%= product.productName %> <em class="text-info"> <%= '- £' + product.price %></em></p>
                                         </div>
                                         <div class="col-sm-6 text-right">
                                             <div class="form-group">
@@ -92,7 +92,7 @@
                                 <% products.forEach(function(product){
                                     if(product.category == 'drinks') { %>                                 
                                         <div class="col-sm-6">
-                                            <p><%= product.productName %> <em class="text-info"> <%= '- £ ' + product.price %></em></p>
+                                            <p><%= product.productName %> <em class="text-info"> <%= '- £' + product.price %></em></p>
                                         </div>
                                         <div class="col-sm-6 text-right">
                                             <div class="form-group">

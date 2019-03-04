@@ -24,7 +24,7 @@ function table1Clicked()
 	tableClicked = 1;
 	console.log("Table " + tableClicked + " clicked");
 	defaultAllTables();
-	table1.style = "border: 2px solid green";
+	table1.style = "border: 2px solid #28a745";
 	changeTableButtonText(tableClicked);
 }
 
@@ -33,7 +33,7 @@ function table2Clicked()
 	tableClicked = 2;
 	console.log("Table " + tableClicked + " clicked");
 	defaultAllTables();
-	table2.style = "border: 2px solid green";
+	table2.style = "border: 2px solid #28a745";
 	changeTableButtonText(tableClicked);
 }
 
@@ -42,7 +42,7 @@ function table3Clicked()
 	tableClicked = 3;
 	console.log("Table " + tableClicked + " clicked");
 	defaultAllTables();
-	table3.style = "border: 2px solid green";
+	table3.style = "border: 2px solid #28a745";
 	changeTableButtonText(tableClicked);
 }
 
@@ -51,7 +51,7 @@ function table4Clicked()
 	tableClicked = 4;
 	console.log("Table " + tableClicked + " clicked");
 	defaultAllTables();
-	table4.style = "border: 2px solid green";
+	table4.style = "border: 2px solid #28a745";
 	changeTableButtonText(tableClicked);
 }
 
@@ -60,7 +60,7 @@ function table5Clicked()
 	tableClicked = 5;
 	console.log("Table " + tableClicked + " clicked");
 	defaultAllTables();
-	table5.style = "border: 2px solid green";
+	table5.style = "border: 2px solid #28a745";
 	changeTableButtonText(tableClicked);
 }
 
@@ -69,7 +69,7 @@ function table6Clicked()
 	tableClicked = 6;
 	console.log("Table " + tableClicked + " clicked");
 	defaultAllTables();
-	table6.style = "border: 2px solid green";
+	table6.style = "border: 2px solid #28a745";
 	changeTableButtonText(tableClicked);
 }
 
@@ -86,4 +86,5 @@ function defaultAllTables()
 function changeTableButtonText(table)
 {
 	tableSelector.innerHTML = "Start/Edit order for Table " + tableClicked;
+	menuTitleNum.innerHTML = "Order for Table " + tableClicked;
 }

@@ -73,10 +73,12 @@
 
     .edit-btn {
         margin-bottom: 10px;
+        width: 100%;
     }
 
     .pay-btn {
         margin-bottom: 10px;
+        width: 100%;
     }
 
     .text-center-sm {
@@ -110,5 +112,9 @@
     .order-button {
         display: block;
         margin-top: 20px;
+    }
+    .item-quantity-input {
+        width: 100%;
+        display: inline-block;
     }
 }
