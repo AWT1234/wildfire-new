@@ -25,6 +25,7 @@ var indexRoutes = require('./routes/index');
 // MODELS
 var Product = require('./models/product');
 var User = require('./models/user');
+var Order = require('./models/order');
 
 
 // PASSPORT CONFIG

@@ -35,7 +35,7 @@
                             <hr>
                         </div>
 
-                        <form action="#" method="post" id="order-form">
+                        <form action="/kitchen" method="post" id="order-form">
                             <div class="row">
                                 <div class="col-sm-12">
                                     <p class="lead">Noodle Dishes</p>
@@ -51,7 +51,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group text-right">
-                                                <input type="number" class="form-control item-quantity-input" min="0" max="50" value="0" id="<%= item %>" name="<%= item %>">
+                                                <input type="number" class="form-control item-quantity-input" min="0" max="50" value="0" id="<%= item %>" name="<%= product.productName %>">
                                             </div>
                                         </div>
                                 <% }}); %>
@@ -60,13 +60,16 @@
                                     <p class="lead">Rice Dishes</p>
                                 </div>
                                 <% products.forEach(function(product){
-                                    if(product.category == 'rice') { %>                                 
+                                    if(product.category == 'rice') {
+                                        var item = product.productName.replace(/\s/g, '');
+                                        item = item.toLowerCase();
+                                        %>                                 
                                         <div class="col-sm-6">
                                             <p><%= product.productName %> <em class="text-info"> <%= '- £' + product.price %></em></p>
                                         </div>
                                         <div class="col-sm-6 text-right">
                                             <div class="form-group">
-                                                <input type="number" class="form-control item-quantity-input" min="0" max="50" value="0" id="<%= product.productName %>" name="<%= product.productName %>">
+                                                <input type="number" class="form-control item-quantity-input" min="0" max="50" value="0" id="<%= item %>" name="<%= product.productName %>">
                                             </div>
                                         </div>
                                 <% }}); %>
@@ -75,13 +78,16 @@
                                     <p class="lead">Western Dishes</p>
                                 </div>
                                 <% products.forEach(function(product){
-                                    if(product.category == 'western') { %>                                 
+                                    if(product.category == 'western') { 
+                                        var item = product.productName.replace(/\s/g, '');
+                                        item = item.toLowerCase();
+                                        %>                                 
                                         <div class="col-sm-6">
                                             <p><%= product.productName %> <em class="text-info"> <%= '- £' + product.price %></em></p>
                                         </div>
                                         <div class="col-sm-6 text-right">
                                             <div class="form-group">
-                                                <input type="number" class="form-control item-quantity-input" min="0" max="50" value="0" id="<%= product.productName %>" name="<%= product.productName %>">
+                                                <input type="number" class="form-control item-quantity-input" min="0" max="50" value="0" id="<%= item %>" name="<%= product.productName %>">
                                             </div>
                                         </div>
                                 <% }}); %>
@@ -90,19 +96,23 @@
                                     <p class="lead">Drinks</p>
                                 </div>
                                 <% products.forEach(function(product){
-                                    if(product.category == 'drinks') { %>                                 
+                                    if(product.category == 'drinks') { 
+                                        var item = product.productName.replace(/\s/g, '');
+                                        item = item.toLowerCase();
+                                        %>                                 
                                         <div class="col-sm-6">
                                             <p><%= product.productName %> <em class="text-info"> <%= '- £' + product.price %></em></p>
                                         </div>
                                         <div class="col-sm-6 text-right">
                                             <div class="form-group">
-                                                <input type="number" class="form-control item-quantity-input" min="0" max="50" value="0" id="<%= product.productName %>" name="<%= product.productName %>">
+                                                <input type="number" class="form-control item-quantity-input" min="0" max="50" value="0" id="<%= item %>" name="<%= product.productName %>">
                                             </div>
                                         </div>
                             
                                 <% }}); %>     
                             </div>
                             <hr>
+                            <input type="hidden" name="tableNum" value="0" id="tableNum">
                             <button type="submit" class="btn btn-primary btn-block col-sm-12">Submit Order</button>
                         </form>
                     </div>

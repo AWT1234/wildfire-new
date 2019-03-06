@@ -87,4 +87,5 @@ function changeTableButtonText(table)
 {
 	tableSelector.innerHTML = "Start/Edit order for Table " + tableClicked;
 	menuTitleNum.innerHTML = "Order for Table " + tableClicked;
+	tableNum.value = tableClicked;
 }

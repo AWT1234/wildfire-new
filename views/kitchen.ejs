@@ -9,93 +9,50 @@
                 <hr>
             </div>
 
+            <% for(var i = 0; i < orders.length; i++){ %>
             <div class="col-md-6 col-lg-4">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-6 kitchen-table-title">
-                                <h3 class="card-title">Table 1</h3>
+                                <h3 class="card-title">Table <%= orders[i].tableNum %></h3>
                             </div>
                             <div class="col-sm-6 kitchen-table-counter">
                                 <h5 class="card-title text-success">00:00:00</h5>
                             </div>
                         </div>
                         <hr>
-                        <ul class="card-text">
-                            <li>Item 1</li>
-                            <li>Item 2</li>
-                            <li>Item 3</li>
-                            <li>Item 4</li>
-                            <li>Item 5</li>
-                            <li>Item 6</li>
-                        </ul>
+                    
+                        <table class="table table-sm table-7 card-body">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Product</td>
+                                    <th scope="col" width="30%">Quantity</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for(var j = 0; j < orders[i].orderDetail.length; j++){ %>
+                                    <tr>
+                                        <td><%= orders[i].orderDetail[j].productName %></td>
+                                        <td><%= orders[i].orderDetail[j].quantity %></td>
+                                    </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                            
+                                
+        
                         <div class="row">
                             <div class="col-sm-12 text-right">
-                                <a href="#" class="btn btn-success order-button"><i data-feather="check-square"></i></a>
+                                <form method="post" action="/counter/<%= orders[i].id %>?_method=PUT">
+                                    <button type="submit" class="btn btn-success order-button"><i data-feather="check-square"></i></button>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-6 kitchen-table-title">
-                                <h3 class="card-title">Table 2</h3>
-                            </div>
-                            <div class="col-sm-6 kitchen-table-counter">
-                                <h5 class="card-title text-warning">00:00:00</h5>
-                            </div>
-                        </div>
-                        <hr>
-                        <ul class="card-text">
-                            <li>Item 1</li>
-                            <li>Item 2</li>
-                            <li>Item 3</li>
-                            <li>Item 4</li>
-                            <li>Item 5</li>
-                            <li>Item 6</li>
-                        </ul>
-                        <div class="row">
-                            <div class="col-sm-12 text-right">
-                                <a href="#" class="btn btn-success order-button"><i data-feather="check-square"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-                <div class="col-md-6 col-lg-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-6 kitchen-table-title">
-                                    <h3 class="card-title">Table 3</h3>
-                                </div>
-                                <div class="col-sm-6 kitchen-table-counter">
-                                    <h5 class="card-title text-success">00:00:00</h5>
-                                </div>
-                            </div>
-                            <hr>
-                            <ul class="card-text">
-                                <li>Item 1</li>
-                                <li>Item 2</li>
-                                <li>Item 3</li>
-                                <li>Item 4</li>
-                                <li>Item 5</li>
-                                <li>Item 6</li>
-                            </ul>
-                            <div class="row">
-                                <div class="col-sm-12 text-right">
-                                    <a href="#" class="btn btn-success order-button"><i data-feather="check-square"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+            <% } %>
         </div> <!-- row -->
     </div> <!-- containter-->
 
