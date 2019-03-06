@@ -64,17 +64,26 @@
     font-size: 20px;
 }
 
+#admin-container button.b {
+    float: left;
+    font-size: 20px;
+}
+
+#admin-container button.c {
+    width: 33%;
+}
 
 #admin-container li {
-    padding: 20px;
     list-style-type: none;
     text-transform: capitalize;
 }
 
 #admin-container li.a {
-    padding: 20px;
     list-style-type: decimal;
-    
+}
+
+#admin-container li.b {
+    padding-bottom: 24px;
 }
 
 .item-quantity-input {

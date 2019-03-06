@@ -121,6 +121,8 @@ router.put('/counter/:id', isLoggedIn, function(req, res){
 });
 
 // Admin
+// Admin
+//get product table
 router.get('/admin', isLoggedIn, function(req, res){
     Product.find({}, function(err, docs){
         var products = docs
@@ -128,36 +130,21 @@ router.get('/admin', isLoggedIn, function(req, res){
     });
 });
 
+//post new product to table
 router.post('/admin', function(req, res) {
     var newProduct = new Product(req.body);
     newProduct.save()
-    .then(item => {
-      res.send("item saved to database");
-    })
-    .catch(err => {
-      res.status(400).send("unable to save to database");
-    });
+    return res.redirect("/admin");
+});
+
+//delete a product from the table
+router.delete('/admin', function(req, res) {
     
 });
 
-router.delete('/admin', function(req, res) {
-    Product.delete({
-        _id: req.params.id
-    }, function(err, doc) {
-        res.send({
-            _id: req.params.id
-        });
-    });
-});
-
+//update a product on the table
 router.put('/admin', function(req, res) {
-    Product.update({
-        _id: req.params.id
-    }, function(err, doc) {
-        res.send({
-            _id: req.params.id
-        });
-    });
+    
 });
 
 // AUTHENICATION

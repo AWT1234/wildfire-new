@@ -89,3 +89,37 @@ function changeTableButtonText(table)
 	menuTitleNum.innerHTML = "Order for Table " + tableClicked;
 	tableNum.value = tableClicked;
 }
+
+
+//==================================================\\
+//	ADMIN											\\
+//==================================================\\
+$(document).ready(function(){
+	//change product name and price to input boxes
+    $(".productDetails").click(function(e) {
+        var input = $("<input>", {
+            val: $(this).text(),
+            type: "<text>" }
+        );
+        $(this).replaceWith(input);
+    });
+
+    $("#editProduct").click(function(e){
+        e.preventDefault();
+        $("span.productDetails").trigger("click");
+    });
+
+    //change product category to select box
+    $(".productDetails2").click(function(e) {
+        var input = $("<select><option>Drinks</option><option>Noodle</option><option>Rice</option><option>Western</option></select>", {
+            val: $(this).text(),
+            type: "<text>" }
+        );
+        $(this).replaceWith(input);
+    });
+
+    $("#editProduct").click(function(e){
+        e.preventDefault();
+        $("span.productDetails2").trigger("click");
+    });
+});

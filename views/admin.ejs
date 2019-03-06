@@ -7,7 +7,7 @@
                 <h1>Admin</h1>
                 <div class="row">
                     <div class="col-12">
-                        <h3>- Edit Product List</h3>
+                        <center><h2>Edit Product List</h2></center>
                     </div>
                 </div>
                 <table class="table">
@@ -34,32 +34,40 @@
                     </form>
                 </table>
                 <table class="table">
-                <div class="row">
-                    <td id="productName" class="">
-                        <% for(var i = 0; i < products.length; i++) { %>
-                           <li class="a"><%= products[i].productName %></li>
-                        <% } %>
-                    </td>
-                    <td id="productPrice" class="">
-                        <% for(var i = 0; i < products.length; i++) { %>
-                           <li>£<%= products[i].price %></li>
-                        <% } %>
-                    </td>
-                    <td id="productCategory" class="">
-                        <% for(var i = 0; i < products.length; i++) { %>
-                           <li><%= products[i].category %></li>
-                        <% } %>
-                    </td>
-                    <td id="actions" class="">
-                        <% for(var i = 0; i < products.length; i++) { %>
-                           <li><button id="saveProduct" type="button" class="btn btn-outline-success a" method="UPDATE" action="/admin">Save</button>
-                            <button id="editProduct" type="button" class="btn btn-outline-warning a" action="">Edit</button>
-                           <button name="deleteProduct" type="button" class="btn btn-outline-danger a" method="DELETE" action="/admin">Delete</button></li><br />
-                        <% } %>
-                    </td>
-                </div>
-            </table>
-
+                    <div class="row">
+                        <td id="actions" class="adminButtons">
+                            <button id="deleteProduct" href="#" type="submit" class="btn btn-outline-danger c" method="DELETE" action="/admin">Delete</button>
+                            <button id="saveProduct" href="#" type="submit" class="btn btn-outline-success c" method="PUT" action="/admin">Save</button>
+                            <button id="editProduct" href="#" onclick="" type="submit" class="btn btn-outline-warning c">Edit All</button>
+                        </td>
+                    </div>
+                </table>
+                <table class="table">
+                    <div class="row">
+                        <td id="productName" class="">
+                            <% for(var i = 0; i < products.length; i++) { %>
+                            <li class="a"><span class="productDetails"><%= products[i].productName %></span></li>
+                            <% } %>
+                        </td>
+                        <td id="productPrice" class="">
+                            <% for(var i = 0; i < products.length; i++) { %>
+                            <li>£<span class="productDetails"><%= products[i].price.value %></span></li>
+                            <% } %>
+                        </td>
+                        <td id="productCategory" class="">
+                            <% for(var i = 0; i < products.length; i++) { %>
+                            <li><span class="productDetails2"><%= products[i].category %></span></li>
+                            <% } %>
+                        </td>
+                        <td id="productDelete" class="">
+                            <% for(var i = 0; i < products.length; i++) { %>
+                            <li class="b"><div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="1" id="checkbox">
+                                </div></li>
+                            <% } %>
+                        </td>
+                    </div>
+                </table>
             </div>
         </div> <!-- row -->
     </div> <!-- containter-->
