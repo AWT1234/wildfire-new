@@ -24,8 +24,9 @@
         	<script>
         		function table<%=i%>Clicked()
 				{
-					var tableClicked = <%=i%>;
-					//console.log("Table " + tableClicked + " clicked");
+					tableClicked = <%=i%>;
+					console.log("Table " + tableClicked + " clicked");
+                    tableNum.value = tableClicked;
 					defaultAllTables();
 					table<%=i%>.style = "border: 2px solid #28a745";
 					changeTableButtonText(tableClicked);
