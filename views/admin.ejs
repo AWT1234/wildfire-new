@@ -45,29 +45,26 @@
                     <div class="row">
                         <td id="productName" class="">
                             <% for(var i = 0; i < products.length; i++) { %>
-                            <li class="a"><span class="productDetails"><%= products[i].productName %></span></li>
+                            <li class="a"><span class="productDetails"><%= products[i].productName %></span></li><br />
                             <% } %>
                         </td>
-                        <br/>
                         <td id="productPrice" class="">
                             <% for(var i = 0; i < products.length; i++) { %>
-                            <li>£<span class="productDetails"><%= products[i].price.value %></span></li>
+                            <li>£<span class="productDetails"><%= products[i].price.value %></span></li><br />
                             <% } %>
                         </td>
-                        <br/>
                         <td id="productCategory" class="productCategoryc">
                             <% for(var i = 0; i < products.length; i++) { %>
-                            <li><span class="productDetails2"><%= products[i].category %></span></li>
+                            <li><span class="productDetails2"><%= products[i].category %></span></li><br />
                             <% } %>
                         </td>
-                        <br/>
                         <td id="productDelete" class="deleteProductCheck">
                             <% for(var i = 0; i < products.length; i++) { %>
                             <li class="b">
                                 <form action="/admin/<%=products[i].id%>?_method=DELETE" method="POST">
-                                    <button>Delete</button>
+                                    
+                                    <button id="saveProduct" class="btn btn-outline-danger d">Delete</button>
                                 </form>
-
                             </li>
                             <% } %>
                         </td>
