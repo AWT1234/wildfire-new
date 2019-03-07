@@ -189,6 +189,13 @@ router.put('/admin/:id', isLoggedIn, function(req, res){
 });
 
 
+router.get('/printer', [isLoggedIn, isAdmin], function(req, res){
+    Product.find({}, function(err, docs){
+        var products = docs
+        res.render('admin', {products})
+    });
+});
+
 // AUTHENICATION
 //////////////////////////////////////////////////////
 
