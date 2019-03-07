@@ -126,4 +126,7 @@ $(document).ready(function(){
     });
 
 
+	$("#editProduct").click(function(){
+        document.getElementById('checkbox').style.paddingBotoom = "80px";
+    });
 });

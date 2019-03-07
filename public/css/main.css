@@ -83,7 +83,12 @@
 }
 
 #admin-container li.b {
-    padding-bottom: 24px;
+    margin-top: -10px;
+    padding-bottom: 34px;
+}
+
+#admin-container input, select {
+    height: 37.5px;
 }
 
 a {
