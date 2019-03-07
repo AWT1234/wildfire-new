@@ -32,31 +32,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <%
-                                //Starting running total
-                                var orderTotal = 0;
-
-                                for(var j = 0; j < orders[i].orderDetail.length; j++){ %>
+                                <% for(var j = 0; j < orders[i].orderDetail.length; j++){ %>
                                 <tr>
-                                <%
-                                %>
                                     <td><%= orders[i].orderDetail[j].productName %></td>
                                     <td><%= orders[i].orderDetail[j].quantity %></td>
-
-                                    <% for(var k = 0; k < prices.length; k++)
-                                    {
-                                    	if(prices[k].productName == orders[i].orderDetail[j].productName)
-                                    	{
-                                    		var item_total = orders[i].orderDetail[j].quantity * prices[k].price;
-                                    		var item_total_formatted = parseFloat(item_total).toFixed(2);
-
-                                    		orderTotal += item_total;
-                                    	%>
-                                    		<td>£<%= item_total_formatted %></td>
-                                    	<%
-                                    	}
-                                    }
-                                    %>
+                                    <td>£</td>
                                 </tr>
                                 <% } %>
                             </tbody>
@@ -69,22 +49,21 @@
                                 <table class="table-totals">
                                     <tr>
                                         <td class="w-50"><strong>Sub-Total:</strong></td>
-                                        <td>£<%= parseFloat(orderTotal).toFixed(2); %></td>
+                                        <td>£0.00</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>VAT @ 20%:</strong></td>
-                                        <td>£<%= parseFloat(orderTotal * 0.2).toFixed(2); %></td>
+                                        <td><strong>VAT:</strong></td>
+                                        <td>£0.00</td>
                                     </tr>
                                     <tr>
                                         <td><strong>Total:</strong></td>
-                                        <td>£<%= parseFloat(orderTotal * 0.2 + orderTotal).toFixed(2); %></td>
+                                        <td>£0.00</td>
                                     </tr>
                                 </table>
                                 <hr>
                             </div>
                             <div class="col-sm-6 text-center">
-                                <form method="get" action="/printer/<%= orders[i].id %>?_method=PUT">
-                                <input type="hidden" name="total" value="">
+                                <form method="post" action="/printer/<%= orders[i].id %>?_method=PUT">
                                     <button type="submit" class="btn btn-info print-btn"><i data-feather="printer"></i> Print</button>
                                 </form>
                             </div>
