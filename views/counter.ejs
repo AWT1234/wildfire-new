@@ -83,8 +83,7 @@
                                 <hr>
                             </div>
                             <div class="col-sm-6 text-center">
-                                <form method="get" action="/printer/<%= orders[i].id %>?_method=PUT">
-                                <input type="hidden" name="total" value="">
+                                <form method="post" action="/printer/<%= orders[i].id %>">
                                     <button type="submit" class="btn btn-info print-btn"><i data-feather="printer"></i> Print</button>
                                 </form>
                             </div>

@@ -34,6 +34,18 @@ router.get('/kitchen', isLoggedIn, function(req, res){
     });
 });
 
+// Printer
+router.post('/printer/:id', isLoggedIn, function(req, res){
+    // get all orders from database with corresponding id
+    var id=req.params.id;
+    Order.find({_id: id}, function(error, docs){
+        // set returned results to products
+        var order = docs;
+        // render waiter view and send products as an array
+        res.render('printer', { order });
+    });
+});
+
 // Kitchen - new order created
 router.post('/kitchen', isLoggedIn, function(req, res){
     
@@ -192,14 +204,6 @@ router.put('/admin/:id', isLoggedIn, function(req, res){
                 res.redirect('/counter');
             }
         });
-    });
-});
-
-
-router.get('/printer', [isLoggedIn, isAdmin], function(req, res){
-    Product.find({}, function(err, docs){
-        var products = docs
-        res.render('admin', {products})
     });
 });
 
