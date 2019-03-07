@@ -70,7 +70,12 @@
 }
 
 #admin-container button.c {
-    width: 33%;
+    width: 50%;
+}
+
+#admin-container button.d {
+    width: 100%;
+    padding: 11px;
 }
 
 #admin-container li {

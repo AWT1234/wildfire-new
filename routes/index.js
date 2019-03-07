@@ -155,8 +155,15 @@ router.post('/admin', function(req, res) {
 });
 
 //delete a product from the table
-router.delete('/admin', function(req, res) {
-    
+router.delete('/admin/:id', function(req, res) {
+    console.log(req.params.id);
+    Product.findByIdAndDelete(req.params.id, err=>{
+       if(err){
+           console.log(err);
+       }else{
+           res.redirect("/admin");
+       }
+    });
 });
 
 //update a product on the table
