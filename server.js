@@ -16,6 +16,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
+app.use(bodyParser.json());
 // Favicon
 //app.use(favicon(__dirname + '/public/images/favicon.png'));
 

@@ -1,5 +1,5 @@
 <% include partials/header %>
-
+<script type="text/javascript" src="/js/admin.js"></script>
 <!-- Content -->
 <div class="container" id="admin-container">
         <div class="row">
@@ -36,14 +36,35 @@
                 <table class="table">
                     <div class="row">
                         <td id="actions" class="adminButtons">
-                            <button id="saveProduct" href="#" type="submit" class="btn btn-outline-success c" method="PUT" action="/admin">Save</button>
-                            <button id="editProduct" href="#" onclick="" type="submit" class="btn btn-outline-warning c">Edit All</button>
+                            <button id="saveProduct" class="btn btn-outline-success c" >Save</button>
+                            <button id="editProduct" type="submit" class="btn btn-outline-warning c">Edit All</button>
                         </td>
                     </div>
                 </table>
-                <table class="table">
+                <table id="adminTable" class="table">
                     <div class="row">
-                        <td id="productName" class="">
+
+                        <%products.forEach( product =>{%>
+                            <tr id="<%=product.id%>" class="productRow">
+                                <td>
+                                    <input value="<%=product.productName%>" class="productName"/><br />
+                                </td>
+                                <td>
+                                    £<input value="<%=product.price.value%>" class="productPrice"/><br />
+                                </td>
+                                <td class="productCategory">
+                                    <select class="productCategory"><option disabled hidden selected><%=product.category%></option><option value="Drinks">Drinks</option><option value="Noodle">Noodle</option><option value="Rice">Rice</option><option value="Western">Western</option></select><br />
+                                </td>
+                                <td class="productDelete">
+                                    <form action="/admin/<%=product.id%>?_method=DELETE" method="POST">
+
+                                        <button id="saveProduct" class="btn btn-outline-danger d">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+
+                        <%});%>
+                        <!--<td id="productName" class="">
                             <% for(var i = 0; i < products.length; i++) { %>
                             <li class="a"><span class="productDetails"><%= products[i].productName %></span></li><br />
                             <% } %>
@@ -67,7 +88,7 @@
                                 </form>
                             </li>
                             <% } %>
-                        </td>
+                        </td>-->
                     </div>
                 </table>
             </div>

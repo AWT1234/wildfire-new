@@ -156,7 +156,6 @@ router.post('/admin', function(req, res) {
 
 //delete a product from the table
 router.delete('/admin/:id', function(req, res) {
-    console.log(req.params.id);
     Product.findByIdAndDelete(req.params.id, err=>{
        if(err){
            console.log(err);
@@ -168,7 +167,17 @@ router.delete('/admin/:id', function(req, res) {
 
 //update a product on the table
 router.put('/admin', function(req, res) {
-    
+    const data = req.body;
+    data.forEach( product =>{
+       Product.findByIdAndUpdate(product.id,product.data, err=>{
+           if(err){
+               console.log(err);
+           }else{
+           }
+       })
+    });
+    res.status(200);
+    res.json({});
 });
 
 router.put('/admin/:id', isLoggedIn, function(req, res){
