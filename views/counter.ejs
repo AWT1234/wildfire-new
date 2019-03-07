@@ -62,13 +62,23 @@
                                 </table>
                                 <hr>
                             </div>
-                         
                             <div class="col-sm-6 text-center">
+                                <form method="post" action="/admin/<%= orders[i].id %>?_method=PUT">
+                                    <button type="submit" class="btn btn-info print-btn"><i data-feather="printer"></i> Print</button>
+                                </form>
+                            </div>
+                            <div class="col-sm-6 text-center">
+                                <form method="post" action="/admin/<%= orders[i].id %>?_method=PUT">
+                                    <button type="submit" class="btn btn-success pay-btn"><i data-feather="credit-card"></i> Pay</button>
+                                </form>
+                            </div>
+    
+                            <!-- <div class="col-sm-6 text-center">
                                 <button class="btn btn-warning edit-btn"><i data-feather="edit"></i> Edit</button>
                             </div>
                             <div class="col-sm-6 text-center">
                                 <button class="btn btn-success pay-btn"><i data-feather="credit-card"></i> Pay</button>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

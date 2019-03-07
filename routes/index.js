@@ -20,6 +20,7 @@ router.get('/waiter', isLoggedIn, function(req, res){
        // render waiter view and send products as an array
        res.render('waiter', { products });
    });
+  
 });
 
 // Kitchen
@@ -139,7 +140,7 @@ router.put('/counter/:id', isLoggedIn, function(req, res){
 // Admin
 // Admin
 //get product table
-router.get('/admin', isLoggedIn, function(req, res){
+router.get('/admin', [isLoggedIn, isAdmin], function(req, res){
     Product.find({}, function(err, docs){
         var products = docs
         res.render('admin', {products})
@@ -162,6 +163,31 @@ router.delete('/admin', function(req, res) {
 router.put('/admin', function(req, res) {
     
 });
+
+router.put('/admin/:id', isLoggedIn, function(req, res){
+   
+    // get id of order from URL
+    var orderId = req.params.id;
+
+    // find order using id
+    Order.find({_id: orderId}, function(error, docs){
+        
+        var order = docs[0];
+
+        // set order status
+        order.status = 'completed';
+
+        // update order in database
+        Order.findByIdAndUpdate(orderId, order, function(error){
+            if(error){
+                console.log(error);
+            } else {
+                res.redirect('/counter');
+            }
+        });
+    });
+});
+
 
 // AUTHENICATION
 //////////////////////////////////////////////////////
@@ -202,5 +228,14 @@ function isLoggedIn(req, res, next){
     }
     res.redirect('/');
 }
+
+function isAdmin(req, res, next){
+    if(req.isAuthenticated() && req.user.username == 'admin'){
+        return next();
+    }
+    res.redirect('/waiter');
+}
+
+
 
 module.exports = router;
