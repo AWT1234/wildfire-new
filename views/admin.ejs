@@ -36,7 +36,6 @@
                 <table class="table">
                     <div class="row">
                         <td id="actions" class="adminButtons">
-                            <button id="deleteProduct" href="#" type="submit" class="btn btn-outline-danger c" method="DELETE" action="/admin">Delete</button>
                             <button id="saveProduct" href="#" type="submit" class="btn btn-outline-success c" method="PUT" action="/admin">Save</button>
                             <button id="editProduct" href="#" onclick="" type="submit" class="btn btn-outline-warning c">Edit All</button>
                         </td>
@@ -49,21 +48,27 @@
                             <li class="a"><span class="productDetails"><%= products[i].productName %></span></li>
                             <% } %>
                         </td>
+                        <br/>
                         <td id="productPrice" class="">
                             <% for(var i = 0; i < products.length; i++) { %>
                             <li>£<span class="productDetails"><%= products[i].price.value %></span></li>
                             <% } %>
                         </td>
+                        <br/>
                         <td id="productCategory" class="productCategoryc">
                             <% for(var i = 0; i < products.length; i++) { %>
                             <li><span class="productDetails2"><%= products[i].category %></span></li>
                             <% } %>
                         </td>
-                        <td id="productDelete" class="">
+                        <br/>
+                        <td id="productDelete" class="deleteProductCheck">
                             <% for(var i = 0; i < products.length; i++) { %>
-                            <li class="b"><div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="1" id="checkbox">
-                                </div></li>
+                            <li class="b">
+                                <form action="/admin/<%=products[i].id%>?_method=DELETE" method="POST">
+                                    <button>Delete</button>
+                                </form>
+
+                            </li>
                             <% } %>
                         </td>
                     </div>
