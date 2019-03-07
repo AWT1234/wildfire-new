@@ -66,7 +66,8 @@ router.post('/kitchen', isLoggedIn, function(req, res){
         total: 0.00,
         orderDetail: orderedItems,
         paymentMethod: "",
-        status: "pending"
+        status: "pending",
+        discount: 0
     }
     
     var newOrder = new Order(order);
@@ -132,6 +133,33 @@ router.put('/counter/:id', isLoggedIn, function(req, res){
                 console.log(error);
             } else {
                 res.redirect('/kitchen');
+            }
+        });
+    });
+});
+
+router.put('/counter/:id/discount', isLoggedIn, function(req, res){
+   
+    // get id of order from URL
+    var orderId = req.params.id;
+
+    // get value of discount from form
+    var discount = req.body.discount;
+
+    // find order using id
+    Order.find({_id: orderId}, function(error, docs){
+        
+        var order = docs[0];
+
+        // set order status
+        order.discount = discount;
+
+        // update order in database
+        Order.findByIdAndUpdate(orderId, order, function(error){
+            if(error){
+                console.log(error);
+            } else {
+                res.redirect('/counter');
             }
         });
     });
@@ -233,6 +261,12 @@ router.post('/register', function(req, res){
 router.get('/logout', function(req, res){
     req.logout();
     res.redirect("/");
+});
+
+// send currentUser var to all routes
+router.use(function(req, res, next){
+    res.locals.currentUser = req.user;
+    next();
 });
 
 // MIDDLEWARE
