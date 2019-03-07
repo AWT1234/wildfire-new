@@ -39,8 +39,6 @@ router.post('/kitchen', isLoggedIn, function(req, res){
     // data sent from order form
     var orderForm = req.body;
 
-    console.log(orderForm);
-
     // assign keys and values from returned object that form sends and save as array
     const productNames = Object.keys(req.body);
     const productQuant = Object.values(req.body);
@@ -89,9 +87,27 @@ router.get('/counter', isLoggedIn, function(req, res){
             console.log(error);
         } else {
             // set returned results to products
-            var orders = docs
-            // render waiter view and send products as an array
-            res.render('counter', { orders });
+            var orders = docs;
+
+            Product.find({}, function(error, docs){
+                if(error){
+                    console.log(error);
+                } else {
+                    
+                    var prices = [];
+                    
+                    for(var i = 0; i < docs.length; i++){
+                        var product = {
+                            productName: docs[i].productName,
+                            price: docs[i].price.value
+                        };
+                        prices.push(product);                       
+                    }
+                    // render waiter view and send products as an array
+                    res.render('counter', { orders, prices });
+                }
+            });
+            
         }
     });
 });
