@@ -10,6 +10,7 @@
             </div>
 
             <% for(var i = 0; i < orders.length; i++){ %>
+                <% //console.log(orders[0].discount); %>
             <div class="col-sm-12 table-title" data-toggle="collapse" href="#collapse<%=i%>" role="button">
                 <div class="row">
                     <div class="col-sm-6 text-center-sm  my-auto"><h4>Table <%= orders[i].tableNum %></h4></div>
@@ -72,19 +73,27 @@
                                         <td>£<%= parseFloat(orderTotal).toFixed(2); %></td>
                                     </tr>
                                     <tr>
-                                        <td><strong>VAT @ 20%:</strong></td>
-                                        <td>£<%= parseFloat(orderTotal * 0.2).toFixed(2); %></td>
+                                        <td><strong>Discount:</strong></td>
+                                        <td><%= orders[i].discount %>%</td>
                                     </tr>
                                     <tr>
                                         <td><strong>Total:</strong></td>
-                                        <td>£<%= parseFloat(orderTotal * 0.2 + orderTotal).toFixed(2); %></td>
+                                        <%
+                                            var x = 100-orders[i].discount;
+                                            x = x/100;
+                                            var total = orderTotal * x
+                                        %>
+                                        <td>£<%= parseFloat(total).toFixed(2); %>  </td>
                                     </tr>
                                 </table>
                                 <hr>
                             </div>
+                            <div class="col-sm-12 text-center">
+                                <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#discountModal<%=i%>"><i data-feather="dollar-sign"></i> Add Discount</button>
+                                <hr>
+                            </div>
                             <div class="col-sm-6 text-center">
-                                <form method="get" action="/printer/<%= orders[i].id %>?_method=PUT">
-                                <input type="hidden" name="total" value="">
+                                <form method="post" action="/printer/<%= orders[i].id %>">
                                     <button type="submit" class="btn btn-info print-btn"><i data-feather="printer"></i> Print</button>
                                 </form>
                             </div>
@@ -93,19 +102,34 @@
                                     <button type="submit" class="btn btn-success pay-btn"><i data-feather="credit-card"></i> Pay</button>
                                 </form>
                             </div>
-    
-                            <!-- <div class="col-sm-6 text-center">
-                                <button class="btn btn-warning edit-btn"><i data-feather="edit"></i> Edit</button>
-                            </div>
-                            <div class="col-sm-6 text-center">
-                                <button class="btn btn-success pay-btn"><i data-feather="credit-card"></i> Pay</button>
-                            </div> -->
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="modal fade" id="discountModal<%=i%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add Discount Code</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/counter/<%= orders[i].id %>/discount?_method=PUT" method="post">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="discount" placeholder="e.g. enter 20 for 20% discount.">
+                                </div>
+                                <button type="submit" class="btn btn-success">Add Discount</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <% } %>
         </div> <!-- row -->
     </div> <!-- containter-->
+
 
 <% include partials/footer %>

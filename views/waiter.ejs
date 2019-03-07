@@ -8,10 +8,32 @@
             <h1>Tables</h1>
         </div>
 
+        <script>
+        function defaultAllTables()
+		{
+			<% for(x = 1; x <= 6; x++)
+			{%>
+				table<%=x%>.style = "border: 1px solid black";
+			<%}%>
+			document.getElementById("order-form").reset();
+		}
+        </script>
+
         <% for(i = 1; i <= 6; i++)
         {%>
+        	<script>
+        		function table<%=i%>Clicked()
+				{
+					tableClicked = <%=i%>;
+					console.log("Table " + tableClicked + " clicked");
+                    tableNum.value = tableClicked;
+					defaultAllTables();
+					table<%=i%>.style = "border: 2px solid #28a745";
+					changeTableButtonText(tableClicked);
+				}
+        	</script>
             <div class="col-sm-4 col-md-3">
-                <div class="card" id="table<%=i%>">
+                <div class="card" onClick="table<%=i%>Clicked();" id="table<%=i%>">
                     <div class="card-body">
                         <h3 class="card-title">Table <%=i %></h3>
                     </div>

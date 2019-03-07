@@ -5,85 +5,10 @@
         <div class="row">
 
             <div class="col-sm-12 title-row">
-                <h1>Counter</h1>
+                <h1>Printer</h1>
                 <hr>
+                <%= order[0].orderDate %>
             </div>
-
-            <% for(var i = 0; i < orders.length; i++){ %>
-            <div class="col-sm-12 table-title" data-toggle="collapse" href="#collapse<%=i%>" role="button">
-                <div class="row">
-                    <div class="col-sm-6 text-center-sm  my-auto"><h4>Table <%= orders[i].tableNum %></h4></div>
-                    <div class="col-sm-6 text-center-sm down-arrow my-auto"><i data-feather="chevrons-down"></i></div>
-                </div>
-            </div>
-            <div class="col-sm-12 table-panel collapse" id="collapse<%=i%>">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <p class="lead">Order</p>
-                        <hr>
-                    </div>
-                    <div class="col-sm-8">
-                        <table class="table-orders">
-                            <thead>
-                                <tr>
-                                    <th scope="col" class="">Item</th>
-                                    <th scope="col">Quantity</th>
-                                    <th scope="col">Price</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <% for(var j = 0; j < orders[i].orderDetail.length; j++){ %>
-                                <tr>
-                                    <td><%= orders[i].orderDetail[j].productName %></td>
-                                    <td><%= orders[i].orderDetail[j].quantity %></td>
-                                    <td>£</td>
-                                </tr>
-                                <% } %>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <hr class="border-sm">
-                                <table class="table-totals">
-                                    <tr>
-                                        <td class="w-50"><strong>Sub-Total:</strong></td>
-                                        <td>£0.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>VAT:</strong></td>
-                                        <td>£0.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Total:</strong></td>
-                                        <td>£0.00</td>
-                                    </tr>
-                                </table>
-                                <hr>
-                            </div>
-                            <div class="col-sm-6 text-center">
-                                <form method="post" action="/printer/<%= orders[i].id %>?_method=PUT">
-                                    <button type="submit" class="btn btn-info print-btn"><i data-feather="printer"></i> Print</button>
-                                </form>
-                            </div>
-                            <div class="col-sm-6 text-center">
-                                <form method="post" action="/admin/<%= orders[i].id %>?_method=PUT">
-                                    <button type="submit" class="btn btn-success pay-btn"><i data-feather="credit-card"></i> Pay</button>
-                                </form>
-                            </div>
-    
-                            <!-- <div class="col-sm-6 text-center">
-                                <button class="btn btn-warning edit-btn"><i data-feather="edit"></i> Edit</button>
-                            </div>
-                            <div class="col-sm-6 text-center">
-                                <button class="btn btn-success pay-btn"><i data-feather="credit-card"></i> Pay</button>
-                            </div> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <% } %>
         </div> <!-- row -->
     </div> <!-- containter-->
 

@@ -34,6 +34,18 @@ router.get('/kitchen', isLoggedIn, function(req, res){
     });
 });
 
+// Printer
+router.post('/printer/:id', isLoggedIn, function(req, res){
+    // get all orders from database with corresponding id
+    var id=req.params.id;
+    Order.find({_id: id}, function(error, docs){
+        // set returned results to products
+        var order = docs;
+        // render waiter view and send products as an array
+        res.render('printer', { order });
+    });
+});
+
 // Kitchen - new order created
 router.post('/kitchen', isLoggedIn, function(req, res){
     
@@ -66,7 +78,8 @@ router.post('/kitchen', isLoggedIn, function(req, res){
         total: 0.00,
         orderDetail: orderedItems,
         paymentMethod: "",
-        status: "pending"
+        status: "pending",
+        discount: 0
     }
     
     var newOrder = new Order(order);
@@ -132,6 +145,33 @@ router.put('/counter/:id', isLoggedIn, function(req, res){
                 console.log(error);
             } else {
                 res.redirect('/kitchen');
+            }
+        });
+    });
+});
+
+router.put('/counter/:id/discount', isLoggedIn, function(req, res){
+   
+    // get id of order from URL
+    var orderId = req.params.id;
+
+    // get value of discount from form
+    var discount = req.body.discount;
+
+    // find order using id
+    Order.find({_id: orderId}, function(error, docs){
+        
+        var order = docs[0];
+
+        // set order status
+        order.discount = discount;
+
+        // update order in database
+        Order.findByIdAndUpdate(orderId, order, function(error){
+            if(error){
+                console.log(error);
+            } else {
+                res.redirect('/counter');
             }
         });
     });
@@ -204,14 +244,6 @@ router.put('/admin/:id', isLoggedIn, function(req, res){
     });
 });
 
-
-router.get('/printer', [isLoggedIn, isAdmin], function(req, res){
-    Product.find({}, function(err, docs){
-        var products = docs
-        res.render('admin', {products})
-    });
-});
-
 // AUTHENICATION
 //////////////////////////////////////////////////////
 
@@ -242,6 +274,12 @@ router.post('/register', function(req, res){
 router.get('/logout', function(req, res){
     req.logout();
     res.redirect("/");
+});
+
+// send currentUser var to all routes
+router.use(function(req, res, next){
+    res.locals.currentUser = req.user;
+    next();
 });
 
 // MIDDLEWARE

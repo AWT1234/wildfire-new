@@ -83,8 +83,7 @@
                             <% for(var i = 0; i < products.length; i++) { %>
                             <li class="b">
                                 <form action="/admin/<%=products[i].id%>?_method=DELETE" method="POST">
-                                    
-                                    <button id="saveProduct" class="btn btn-outline-danger d">Delete</button>
+                                    <button id="deleteProduct" class="btn btn-outline-danger d">Delete</button>
                                 </form>
                             </li>
                             <% } %>
