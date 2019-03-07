@@ -1,4 +1,5 @@
 <% include partials/header %>
+<script type="text/javascript" src="/js/kitchen.js"></script>
 
 <!-- Content -->
 <div class="container">
@@ -9,7 +10,30 @@
                 <hr>
             </div>
 
-            <% for(var i = 0; i < orders.length; i++){ %>
+            <%
+            function formatTime(seconds) {
+                var h = Math.floor(seconds / 3600),
+                        m = Math.floor(seconds / 60) % 60,
+                        s = seconds % 60;
+                if (h < 10) h = "0" + h;
+                if (m < 10) m = "0" + m;
+                if (s < 10) s = "0" + s;
+                return h + ":" + m + ":" + s;
+            }
+            for(var i = 0; i < orders.length; i++){
+                const timeSinceOrder = orders[i].orderDate;
+                const now = new Date();
+                var className = "card-title text-success";
+                const secondsPassed =Math.round((now - timeSinceOrder) / 1000);
+                const toDisplay = formatTime(secondsPassed);
+                if(secondsPassed >= 600 && secondsPassed < 1200){
+                    className = "card-title text-warning";
+                    console.log("warning");
+                }else if(secondsPassed >= 1200){
+                    className = "card-title text-danger";
+                    console.log("danger");
+                }
+            %>
             <div class="col-md-6 col-lg-4">
                 <div class="card">
                     <div class="card-body">
@@ -18,7 +42,7 @@
                                 <h3 class="card-title">Table <%= orders[i].tableNum %></h3>
                             </div>
                             <div class="col-sm-6 kitchen-table-counter">
-                                <h5 class="card-title text-success">00:00:00</h5>
+                                <h5 class="<%= className%>"><%= toDisplay %></h5>
                             </div>
                         </div>
                         <hr>
