@@ -124,11 +124,4 @@ $(document).ready(function(){
         e.preventDefault();
         $("span.productDetails2").trigger("click");
     });
-
-
-	$("#editProduct").click(function(){
-        document.getElementById('checkbox').style.paddingBotoom = "80px";
-    });
-
-
 });
