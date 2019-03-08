@@ -82,8 +82,9 @@
                                             var x = 100-orders[i].discount;
                                             x = x/100;
                                             var total = orderTotal * x
+                                            total = parseFloat(total).toFixed(2);
                                         %>
-                                        <td>£<%= parseFloat(total).toFixed(2); %>  </td>
+                                        <td>£<%= total %>  </td>
                                     </tr>
                                 </table>
                                 <hr>
@@ -99,6 +100,7 @@
                             </div>
                             <div class="col-sm-6 text-center">
                                 <form method="post" action="/admin/<%= orders[i].id %>?_method=PUT">
+                                    <input type="hidden" name="total" value="<%= total %>">
                                     <button type="submit" class="btn btn-success pay-btn"><i data-feather="credit-card"></i> Pay</button>
                                 </form>
                             </div>

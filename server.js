@@ -22,12 +22,13 @@ app.use(bodyParser.json());
 
 // ROUTES
 var indexRoutes = require('./routes/index');
+var waiterRoutes = require('./routes/waiter');
+var kitchenRoutes = require('./routes/kitchen');
+var counterRoutes = require('./routes/counter');
+var adminRoutes = require('./routes/admin');
 
-// MODELS
-var Product = require('./models/product');
+// User Model
 var User = require('./models/user');
-var Order = require('./models/order');
-
 
 // PASSPORT CONFIG
 app.use(require('express-session')({
@@ -49,6 +50,10 @@ app.use(function(req, res, next){
 
 // Use the routes
 app.use(indexRoutes);
+app.use(waiterRoutes);
+app.use(kitchenRoutes);
+app.use(counterRoutes);
+app.use(adminRoutes);
 
 app.listen(port, () => {
     console.log('Server started: ' + port);

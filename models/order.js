@@ -15,7 +15,6 @@ var orderSchema = new mongoose.Schema({
             quantity: String
         }
     ],
-    paymentMethod: String,
     status: String,
     discount: Number
 });
