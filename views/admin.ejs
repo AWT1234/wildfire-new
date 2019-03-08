@@ -1,4 +1,6 @@
 <% include partials/header %>
+
+
 <script type="text/javascript" src="/js/admin.js"></script>
 <!-- Content -->
 <div class="container" id="admin-container">
@@ -21,17 +23,15 @@
                             </tr>
                         </thead>
                         <tr>
-                            <td><input name="productName" type="text" class="form-control" placeholder="Product name..." required></td>
-
-                            <td><input name="price" type="number" step="0.01" class="form-control" placeholder="Product price..." required></td>
-                            
-                            <td><select name="category" class="form-control" required>
+                            <td class="e"><input name="productName" type="text" class="form-control" placeholder="Product name..." required></td>
+                            <td class="f"><input id="productPrice" name="price" type="number" step="0.01" class="form-control a" placeholder="Product price..." required><label for="productPrice" class="static-value">£</label></td>
+                            <td class="g"><select name="category" class="form-control" required>
                                 <option disabled hidden selected>Product category...</option>
                                 <option value="drinks">Drinks</option>
                                 <option value="noodle">Noodle</option>
                                 <option value="rice">Rice</option>
                                 <option value="western">Western</option></select></td>
-                            <td><input type="submit" class="btn btn-outline-success add-product" value="Add + "></td>
+                            <td><input type="submit" class="btn btn-outline-success d" value="Add + "></td>
                         </tr>
                     </form>
                 </table>
@@ -39,56 +39,30 @@
                     <div class="row">
                         <td id="actions" class="adminButtons">
                             <button id="saveProduct" class="btn btn-outline-success c" >Save</button>
-                            </td>
+                        </td>
                     </div>
                 </table>
                 <table id="adminTable" class="table">
                     <div class="row">
-
                         <%products.forEach( product =>{%>
                             <tr id="<%=product.id%>" class="productRow">
-                                <td>
-                                    <input value="<%=product.productName%>" class="productName"/><br />
+                                <td class="e">
+                                    <input value="<%=product.productName%>" class="form-control"/>
                                 </td>
-                                <td>
-                                    £<input value="<%=product.price.value%>" class="productPrice"/><br />
+                                <td class="f">
+                                    <input id="productPrice" value="<%=product.price.value%>" type="number" step="0.01" class="productPrice a form-control"/>
+                                    <label for="productPrice" class="static-value">£</label>
                                 </td>
-                                <td class="productCategory">
-                                    <select class="productCategory"><option disabled hidden selected><%=product.category%></option><option value="Drinks">Drinks</option><option value="Noodle">Noodle</option><option value="Rice">Rice</option><option value="Western">Western</option></select><br />
+                                <td class="productCategory g">
+                                    <select class="productCategory form-control"><option disabled hidden selected><%=product.category%></option><option value="drinks">Drinks</option><option value="noodle">Noodle</option><option value="rice">Rice</option><option value="western">Western</option></select>
                                 </td>
                                 <td class="productDelete">
                                     <form action="/admin/<%=product.id%>?_method=DELETE" method="POST">
-
                                         <button id="saveProduct" class="btn btn-outline-danger d">Delete</button>
                                     </form>
                                 </td>
                             </tr>
-
                         <%});%>
-                        <!--<td id="productName" class="">
-                            <% for(var i = 0; i < products.length; i++) { %>
-                            <li class="a"><span class="productDetails"><%= products[i].productName %></span></li><br />
-                            <% } %>
-                        </td>
-                        <td id="productPrice" class="">
-                            <% for(var i = 0; i < products.length; i++) { %>
-                            <li>£<span class="productDetails"><%= products[i].price.value %></span></li><br />
-                            <% } %>
-                        </td>
-                        <td id="productCategory" class="productCategoryc">
-                            <% for(var i = 0; i < products.length; i++) { %>
-                            <li><span class="productDetails2"><%= products[i].category %></span></li><br />
-                            <% } %>
-                        </td>
-                        <td id="productDelete" class="deleteProductCheck">
-                            <% for(var i = 0; i < products.length; i++) { %>
-                            <li class="b">
-                                <form action="/admin/<%=products[i].id%>?_method=DELETE" method="POST">
-                                    <button id="deleteProduct" class="btn btn-outline-danger d">Delete</button>
-                                </form>
-                            </li>
-                            <% } %>
-                        </td>-->
                     </div>
                 </table>
             </div>

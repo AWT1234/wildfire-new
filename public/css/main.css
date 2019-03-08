@@ -1,3 +1,7 @@
+select, input, p, td, th, a {
+    text-transform: capitalize;
+}
+
 .title-row {
     margin-top: 25px;
     margin-bottom: 25px;
@@ -70,12 +74,11 @@
 }
 
 #admin-container button.c {
-    width: 50%;
+    width: 100%;
 }
 
 #admin-container button.d {
     width: 100%;
-    padding: 11px;
 }
 
 #admin-container li {
@@ -96,8 +99,34 @@
     height: 37.5px;
 }
 
-a {
-    text-transform: capitalize;
+#admin-container td.e {
+    width: 30%;
+}
+
+#admin-container td.f {
+    width: 25%;
+    position:relative;
+}
+
+#admin-container td.g {
+    width: 25%;
+}
+
+#admin-container input.d {
+    width: 100%;
+}
+
+#admin-container input.a{
+    padding:5px 5px 5px 25px;
+}
+
+#admin-container .static-value{
+    position:absolute;
+    left:20px;
+    font-weight:bold;
+    font-size:1.2em;
+    color:#3A3939;
+    top:17px;
 }
 
 .item-quantity-input {

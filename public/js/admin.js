@@ -6,7 +6,7 @@ $(document ).ready( () =>{
 			const id = $(this).attr("id");
 			let row = {};
 			$(this).find('input').each(function(i,l){
-				if(l.className === "productName"){
+				if(l.className === "form-control"){
 					row.productName= l.value;
 				}else{
 					row.price = parseFloat(l.value);
