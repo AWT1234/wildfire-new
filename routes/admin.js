@@ -63,7 +63,7 @@ router.put('/admin', [isLoggedIn, isAdmin], function(req, res) {
 });
 
 // update order to complete
-router.put('/admin/:id', [isLoggedIn, isAdmin], function(req, res){
+router.put('/admin/:id', isLoggedIn, function(req, res){
    
     // get id of order from URL
     var orderId = req.params.id;

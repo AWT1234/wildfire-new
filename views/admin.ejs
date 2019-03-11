@@ -2,7 +2,7 @@
 
 
 <script type="text/javascript" src="/js/admin.js"></script>
-<!-- Content -->
+<!--Displays the admin page, an editible collection of food items.Also allows to add a food item-->
 <div class="container" id="admin-container">
         <div class="row">
             <div class="col-sm-12 title-row">
@@ -12,6 +12,7 @@
                         <center><h2>Product List</h2></center>
                     </div>
                 </div>
+                <!-- Contains the view for adding a food to the db. Works by sending the form details directly to admin via a POST request-->
                 <table class="table">
                     <form id="addProductForm" method="POST" action="/admin">
                         <thead>
@@ -35,6 +36,7 @@
                         </tr>
                     </form>
                 </table>
+                <!-- The save button -->
                 <table class="table">
                     <div class="row">
                         <td id="actions" class="adminButtons">
@@ -44,6 +46,8 @@
                 </table>
                 <table id="adminTable" class="table">
                     <div class="row">
+                        <!-- Parses the products to display, looping over each product to display the relevant info.
+                        Then jquery is used on admin.js to handle the saving of the data-->
                         <%products.forEach( product =>{%>
                             <tr id="<%=product.id%>" class="productRow">
                                 <td class="e">

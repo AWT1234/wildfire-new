@@ -120,7 +120,7 @@
                         <div class="modal-body">
                             <form action="/counter/<%= orders[i].id %>/discount?_method=PUT" method="post">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="discount" placeholder="e.g. enter 20 for 20% discount.">
+                                    <input type="number" step="1" class="form-control" name="discount" placeholder="e.g. enter 20 for 20% discount.">
                                 </div>
                                 <button type="submit" class="btn btn-success">Add Discount</button>
                             </form>
