@@ -5,9 +5,28 @@
         <div class="row">
 
             <div class="col-sm-12 title-row">
-                <h1>Printer</h1>
+                <h1>Order Summary for Table <%= order[0].tableNum %></h1>
                 <hr>
-                <%= order[0].orderDate %>
+                <%
+                for(let  i = 0; i < order[0].orderDetail.length; i++)
+                {
+                %>
+                	<%= order[0].orderDetail[i].quantity %>
+                	x
+                	<%= order[0].orderDetail[i].productName %>
+                    <br>
+                <%
+                }
+                %>
+                <hr>
+                <br>
+                Discount: <%= order[0].discount %>%
+                <br>
+                Payment: <%= order[0].paymentMethod %>
+                <br>
+                Status: <%= order[0].status %>
+                <br>
+                Order date: <%= order[0].orderDate %>
             </div>
         </div> <!-- row -->
     </div> <!-- containter-->
