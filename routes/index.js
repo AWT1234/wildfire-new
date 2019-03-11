@@ -19,9 +19,28 @@ router.post('/printer/:id', isLoggedIn, function(req, res){
     Order.find({_id: id}, function(error, docs){
         // set returned results to products
         var order = docs;
-        // render waiter view and send products as an array
-        res.render('printer', { order });
+
+        Product.find({}, function(error, docs){
+                if(error){
+                    console.log(error);
+                } else {
+                    
+                    var prices = [];
+                    
+                    for(var i = 0; i < docs.length; i++){
+                        var product = {
+                            productName: docs[i].productName,
+                            price: docs[i].price.value
+                        };
+                        prices.push(product);                       
+                    }
+                    // render waiter view and send products as an array
+                    res.render('printer', { order, prices });
+                }
+            });
     });
+
+
 });
 
 // AUTHENICATION
