@@ -188,3 +188,11 @@ select, input, p, td, th, a {
         display: inline-block;
     }
 }
+
+@media print
+{    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
