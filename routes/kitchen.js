@@ -13,7 +13,7 @@ router.get('/kitchen', isLoggedIn, function(req, res){
     // get all orders from database that are pending
     Order.find({status: "pending"}, function(error, docs){
         // set returned results to products
-        var orders = docs
+        var orders = docs;
         // render waiter view and send products as an array
         res.render('kitchen', { orders });
     });

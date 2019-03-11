@@ -20,8 +20,7 @@
                 if (s < 10) s = "0" + s;
                 return h + ":" + m + ":" + s;
             }
-            <!-- Handles the timer for the display, with timers higher than 10 min turning into orange and higher than
-             20 turning into red-->
+            // Handles the timer for the display, with timers higher than 10 min turning into orange and higher than 20 turning into red
             for(var i = 0; i < orders.length; i++){
                 const timeSinceOrder = orders[i].orderDate;
                 const now = new Date();
