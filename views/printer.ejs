@@ -27,16 +27,23 @@
                             }
                                     %>
                 <hr>
-                Sub-total: £<%= orderTotal%>
+                <strong>Sub-total:</strong> £<%= orderTotal%>
                 <br>
-                Discount: <%= order[0].discount %>%
+                <strong>Discount:</strong> <%= order[0].discount %>%
                 <br>
-                Total: £<%= Math.round((orderTotal - ((orderTotal / 100) * order[0].discount)) * 100) /100%>
+                <strong>Total:</strong> £<%= Math.round((orderTotal - ((orderTotal / 100) * order[0].discount)) * 100) /100%>
                 <hr>
-                Order date: <%= order[0].orderDate %>
+                <strong>Order Date:</strong> <%= order[0].orderDate %>
+                <hr>
+                <!-- Print Button -->
+                <button class="btn btn-info print-btn no-print" onclick="printFunction()"><i data-feather="printer"></i> Print</button>
+                <br><br>
+                <a href="/counter" class="no-print">&laquo; back</a>
             </div>
         </div> <!-- row -->
     </div> <!-- containter-->
+
+  
 
 <% include partials/footer %>
 
