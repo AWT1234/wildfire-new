@@ -3,7 +3,7 @@
 //==================================================\\
 $(document).ready(function()
 {
-    var tableClicked;
+    var tableClicked = 1;
 });
 
 function changeTableButtonText(tableClicked)

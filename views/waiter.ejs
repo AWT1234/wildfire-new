@@ -9,6 +9,7 @@
         </div>
         <!-- Create 6 boxes for each table-->
         <script>
+            console.log(tableClicked);
         function defaultAllTables()
 		{
 			<% for(x = 1; x <= 6; x++)
@@ -32,6 +33,7 @@
 					defaultAllTables();
 					table<%=i%>.style = "border: 2px solid #28a745";
 					changeTableButtonText(tableClicked);
+                    tableSelector.disabled = false;
 				}
             </script>
             <!-- For each table clicked, the number of toggle button will change to the table number-->
@@ -48,7 +50,7 @@
     <!-- toggle button to show the menu -->   
     <div class="row">
         <div class="offset-lg-2 col-md-12 col-lg-8" style="margin-bottom: 25px">
-            <button type="submit" class="btn btn-primary btn-block" id="tableSelector" type="button" data-toggle="collapse" data-target="#collapseMenu">Start/Edit order for Selected Table</button>
+            <button type="submit" class="btn btn-primary btn-block" id="tableSelector" type="button" data-toggle="collapse" data-target="#collapseMenu" disabled>Select a Table</button>
         </div>
     </div>
 
