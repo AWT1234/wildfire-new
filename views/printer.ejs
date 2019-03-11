@@ -6,31 +6,32 @@
             <div class="col-sm-12 title-row">
                 <h1>Order Summary for Table <%= order[0].tableNum %></h1>
                 <hr>
-                <% for(var i = 0; i < order[0].orderDetail.length; i++)
+                <%
+                var orderTotal = 0;
+                for(var i = 0; i < order[0].orderDetail.length; i++)
                 {
-                for(var k = 0; k < prices.length; k++)
-                {
-                    if(prices[k].productName == order[0].orderDetail[i].productName)
+                    for(var k = 0; k < prices.length; k++)
                     {
-                        var item_total = order[0].orderDetail[k].quantity * prices[k].price;
+                        if(prices[k].productName == order[0].orderDetail[i].productName)
+                        {
+                            var item_total = order[0].orderDetail[i].quantity * prices[k].price;
                             var item_total_formatted = parseFloat(item_total).toFixed(2);
 
                             orderTotal += item_total;
                                         %>
-                                            <td>£<%= item_total_formatted %></td>
+                                            <td><%=order[0].orderDetail[i].quantity%> x <%=order[0].orderDetail[i].productName %> (£<%= item_total_formatted %>)</td>
+                                        <br/>
                                         <%
                                         }
                                 }
                             }
                                     %>
                 <hr>
-                Sub-total:
+                Sub-total: £<%= orderTotal%>
                 <br>
                 Discount: <%= order[0].discount %>%
                 <br>
-                Total:
-                <br>
-                Payment: <%= order[0].paymentMethod %>
+                Total: £<%= Math.round((orderTotal - ((orderTotal / 100) * order[0].discount)) * 100) /100%>
                 <hr>
                 Order date: <%= order[0].orderDate %>
             </div>
