@@ -6,8 +6,8 @@
 2. Install MongoDB
 3. In MongoDB, create a database called 'wildfire'
 4. Inside the wildfire database, make a collection called 'products'
-5. Import the products.json file to the 'products' collections
-6. In the root folder called 'wilefire-new', run the command 'npm install'
+5. Import the products.json file to the 'products' collection
+6. In the root folder called 'wildfire-new', run the command 'npm install'
 7. Run the command 'node server.js'
 8. Open your web browser and visit 'localhost:8000'
 
