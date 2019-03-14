@@ -8,7 +8,7 @@ $(document).ready(function()
 
 function changeTableButtonText(tableClicked)
 {
-	tableSelector.innerHTML = "Start/Edit order for Table " + tableClicked;
+	tableSelector.innerHTML = "Start order for Table " + tableClicked;
 	menuTitleNum.innerHTML = "Order for Table " + tableClicked;
 }
 

@@ -54,7 +54,7 @@
                                     <input value="<%=product.productName%>" class="form-control"/>
                                 </td>
                                 <td class="f">
-                                    <input id="productPrice" value="<%=product.price.value%>" type="number" step="0.01" class="productPrice a form-control"/>
+                                    <input id="productPrice" value="<%=parseFloat(product.price.value).toFixed(2)%>" type="number" step="0.01" class="productPrice a form-control"/>
                                     <label for="productPrice" class="static-value">£</label>
                                 </td>
                                 <td class="productCategory g">
